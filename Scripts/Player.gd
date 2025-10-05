@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	print(Input.get_vector("left","right","up","down"))
+	#print(Input.get_vector("left","right","up","down"))
 	velocity = Input.get_vector("left","right","up","down") * move_speed
 	if velocity == Vector2.ZERO:
 		animator.play("idle")
@@ -19,3 +19,8 @@ func _physics_process(delta: float) -> void:
 		animator.play("run")
 	
 	move_and_slide()
+	
+	
+
+func game_over():
+	get_tree().reload_current_scene()
