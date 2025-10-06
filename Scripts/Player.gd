@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_game_over:
 		#print(Input.get_vector("left","right","up","down"))
-		velocity = Input.get_vector("left","right","up","down") * move_speed
+		velocity = Input.get_vector("left","right","up","down") * move_speed * delta / delta
 		if velocity == Vector2.ZERO:
 			animator.play("idle")
 		else:
@@ -27,10 +27,14 @@ func _physics_process(delta: float) -> void:
 	
 
 func game_over():
-	is_game_over = true
-	animator.play("game_over")
-	await get_tree().create_timer(3).timeout
-	get_tree().reload_current_scene()
+	if not is_game_over:
+		is_game_over = true
+		animator.play("game_over")
+		get_tree().current_scene.show_game_over()
+		
+		await get_tree().create_timer(3).timeout
+		get_tree().reload_current_scene()
+		
 
 
 
