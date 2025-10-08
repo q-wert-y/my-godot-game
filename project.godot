@@ -15,6 +15,10 @@ run/main_scene="uid://tufabcbriy6f"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Bgm="*res://Scenes/bgm.tscn"
+
 [input]
 
 left={

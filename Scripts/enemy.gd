@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and not is_dead:
 		print("Hit Player")
 		body.game_over()
 
@@ -26,7 +26,7 @@ func _on_area_entered(area: Area2D) -> void:
 		$AnimatedSprite2D.play("death")
 		is_dead = true
 		get_tree().current_scene.score += 1
-		
+		$DeathSound.play()
 		await  get_tree().create_timer(0.6).timeout
 		queue_free()
 		
