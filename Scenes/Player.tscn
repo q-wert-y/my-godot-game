@@ -169,4 +169,9 @@ volume_db = 12.55
 stream = ExtResource("6_nn08x")
 volume_db = 10.643
 
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_fire"]
+[connection signal="timeout" from="RestartTimer" to="." method="_reload_scene"]
